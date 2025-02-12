@@ -1,0 +1,443 @@
+{
+	"info": {
+		"_postman_id": "cc9b67c0-1876-4f98-914a-ab4aa71f727f",
+		"name": "api-testing-with-postman",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25134170"
+	},
+	"item": [
+		{
+			"name": "Get data with Authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/user/repos",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"user",
+						"repos"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "Get data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.github.com/user/repos",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"user",
+								"repos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 Feb 2025 05:11:26 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "private, max-age=60, s-maxage=60"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Authorization, Cookie, X-GitHub-OTP,Accept-Encoding, Accept, X-Requested-With"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e406ea0dc0922ee16b78580fb4875e67a5ede4f3362319827138e00bc0752eeb\""
+						},
+						{
+							"key": "X-OAuth-Scopes",
+							"value": "admin:enterprise, admin:gpg_key, admin:org, admin:org_hook, admin:public_key, admin:repo_hook, admin:ssh_signing_key, audit_log, codespace, copilot, delete:packages, delete_repo, gist, notifications, project, repo, user, workflow, write:discussion, write:network_configurations, write:packages"
+						},
+						{
+							"key": "X-Accepted-OAuth-Scopes",
+							"value": ""
+						},
+						{
+							"key": "github-authentication-token-expiration",
+							"value": "2025-03-14 04:46:58 UTC"
+						},
+						{
+							"key": "X-GitHub-Media-Type",
+							"value": "github.v3; format=json"
+						},
+						{
+							"key": "x-github-api-version-selected",
+							"value": "2022-11-28"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "5000"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "4996"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1739339054"
+						},
+						{
+							"key": "X-RateLimit-Used",
+							"value": "4"
+						},
+						{
+							"key": "X-RateLimit-Resource",
+							"value": "core"
+						},
+						{
+							"key": "Access-Control-Expose-Headers",
+							"value": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubdomains; preload"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "deny"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin-when-cross-origin, strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'none'"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Server",
+							"value": "github.com"
+						},
+						{
+							"key": "X-GitHub-Request-Id",
+							"value": "7C0A:3F073D:195FB5:26DC57:67AC2D7E"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 931323960,\n        \"node_id\": \"R_kgDON4LgOA\",\n        \"name\": \"api-testing-with-postman\",\n        \"full_name\": \"Navnath-097/api-testing-with-postman\",\n        \"private\": false,\n        \"owner\": {\n            \"login\": \"Navnath-097\",\n            \"id\": 119046497,\n            \"node_id\": \"U_kgDOBxiBYQ\",\n            \"avatar_url\": \"https://avatars.githubusercontent.com/u/119046497?v=4\",\n            \"gravatar_id\": \"\",\n            \"url\": \"https://api.github.com/users/Navnath-097\",\n            \"html_url\": \"https://github.com/Navnath-097\",\n            \"followers_url\": \"https://api.github.com/users/Navnath-097/followers\",\n            \"following_url\": \"https://api.github.com/users/Navnath-097/following{/other_user}\",\n            \"gists_url\": \"https://api.github.com/users/Navnath-097/gists{/gist_id}\",\n            \"starred_url\": \"https://api.github.com/users/Navnath-097/starred{/owner}{/repo}\",\n            \"subscriptions_url\": \"https://api.github.com/users/Navnath-097/subscriptions\",\n            \"organizations_url\": \"https://api.github.com/users/Navnath-097/orgs\",\n            \"repos_url\": \"https://api.github.com/users/Navnath-097/repos\",\n            \"events_url\": \"https://api.github.com/users/Navnath-097/events{/privacy}\",\n            \"received_events_url\": \"https://api.github.com/users/Navnath-097/received_events\",\n            \"type\": \"User\",\n            \"user_view_type\": \"public\",\n            \"site_admin\": false\n        },\n        \"html_url\": \"https://github.com/Navnath-097/api-testing-with-postman\",\n        \"description\": null,\n        \"fork\": false,\n        \"url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman\",\n        \"forks_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/forks\",\n        \"keys_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/keys{/key_id}\",\n        \"collaborators_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/collaborators{/collaborator}\",\n        \"teams_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/teams\",\n        \"hooks_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/hooks\",\n        \"issue_events_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/issues/events{/number}\",\n        \"events_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/events\",\n        \"assignees_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/assignees{/user}\",\n        \"branches_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/branches{/branch}\",\n        \"tags_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/tags\",\n        \"blobs_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/git/blobs{/sha}\",\n        \"git_tags_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/git/tags{/sha}\",\n        \"git_refs_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/git/refs{/sha}\",\n        \"trees_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/git/trees{/sha}\",\n        \"statuses_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/statuses/{sha}\",\n        \"languages_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/languages\",\n        \"stargazers_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/stargazers\",\n        \"contributors_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/contributors\",\n        \"subscribers_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/subscribers\",\n        \"subscription_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/subscription\",\n        \"commits_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/commits{/sha}\",\n        \"git_commits_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/git/commits{/sha}\",\n        \"comments_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/comments{/number}\",\n        \"issue_comment_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/issues/comments{/number}\",\n        \"contents_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/contents/{+path}\",\n        \"compare_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/compare/{base}...{head}\",\n        \"merges_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/merges\",\n        \"archive_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/{archive_format}{/ref}\",\n        \"downloads_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/downloads\",\n        \"issues_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/issues{/number}\",\n        \"pulls_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/pulls{/number}\",\n        \"milestones_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/milestones{/number}\",\n        \"notifications_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/notifications{?since,all,participating}\",\n        \"labels_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/labels{/name}\",\n        \"releases_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/releases{/id}\",\n        \"deployments_url\": \"https://api.github.com/repos/Navnath-097/api-testing-with-postman/deployments\",\n        \"created_at\": \"2025-02-12T04:45:19Z\",\n        \"updated_at\": \"2025-02-12T04:45:20Z\",\n        \"pushed_at\": \"2025-02-12T04:45:20Z\",\n        \"git_url\": \"git://github.com/Navnath-097/api-testing-with-postman.git\",\n        \"ssh_url\": \"git@github.com:Navnath-097/api-testing-with-postman.git\",\n        \"clone_url\": \"https://github.com/Navnath-097/api-testing-with-postman.git\",\n        \"svn_url\": \"https://github.com/Navnath-097/api-testing-with-postman\",\n        \"homepage\": null,\n        \"size\": 0,\n        \"stargazers_count\": 0,\n        \"watchers_count\": 0,\n        \"language\": null,\n        \"has_issues\": true,\n        \"has_projects\": true,\n        \"has_downloads\": true,\n        \"has_wiki\": true,\n        \"has_pages\": false,\n        \"has_discussions\": false,\n        \"forks_count\": 0,\n        \"mirror_url\": null,\n        \"archived\": false,\n        \"disabled\": false,\n        \"open_issues_count\": 0,\n        \"license\": null,\n        \"allow_forking\": true,\n        \"is_template\": false,\n        \"web_commit_signoff_required\": false,\n        \"topics\": [],\n        \"visibility\": \"public\",\n        \"forks\": 0,\n        \"open_issues\": 0,\n        \"watchers\": 0,\n        \"default_branch\": \"main\",\n        \"permissions\": {\n            \"admin\": true,\n            \"maintain\": true,\n            \"push\": true,\n            \"triage\": true,\n            \"pull\": true\n        }\n    },\n    {\n        \"id\": 931031563,\n        \"node_id\": \"R_kgDON35qCw\",\n        \"name\": \"TestAutomationUsingSelenium\",\n        \"full_name\": \"Navnath-097/TestAutomationUsingSelenium\",\n        \"private\": false,\n        \"owner\": {\n            \"login\": \"Navnath-097\",\n            \"id\": 119046497,\n            \"node_id\": \"U_kgDOBxiBYQ\",\n            \"avatar_url\": \"https://avatars.githubusercontent.com/u/119046497?v=4\",\n            \"gravatar_id\": \"\",\n            \"url\": \"https://api.github.com/users/Navnath-097\",\n            \"html_url\": \"https://github.com/Navnath-097\",\n            \"followers_url\": \"https://api.github.com/users/Navnath-097/followers\",\n            \"following_url\": \"https://api.github.com/users/Navnath-097/following{/other_user}\",\n            \"gists_url\": \"https://api.github.com/users/Navnath-097/gists{/gist_id}\",\n            \"starred_url\": \"https://api.github.com/users/Navnath-097/starred{/owner}{/repo}\",\n            \"subscriptions_url\": \"https://api.github.com/users/Navnath-097/subscriptions\",\n            \"organizations_url\": \"https://api.github.com/users/Navnath-097/orgs\",\n            \"repos_url\": \"https://api.github.com/users/Navnath-097/repos\",\n            \"events_url\": \"https://api.github.com/users/Navnath-097/events{/privacy}\",\n            \"received_events_url\": \"https://api.github.com/users/Navnath-097/received_events\",\n            \"type\": \"User\",\n            \"user_view_type\": \"public\",\n            \"site_admin\": false\n        },\n        \"html_url\": \"https://github.com/Navnath-097/TestAutomationUsingSelenium\",\n        \"description\": null,\n        \"fork\": false,\n        \"url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium\",\n        \"forks_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/forks\",\n        \"keys_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/keys{/key_id}\",\n        \"collaborators_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/collaborators{/collaborator}\",\n        \"teams_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/teams\",\n        \"hooks_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/hooks\",\n        \"issue_events_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/issues/events{/number}\",\n        \"events_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/events\",\n        \"assignees_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/assignees{/user}\",\n        \"branches_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/branches{/branch}\",\n        \"tags_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/tags\",\n        \"blobs_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/git/blobs{/sha}\",\n        \"git_tags_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/git/tags{/sha}\",\n        \"git_refs_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/git/refs{/sha}\",\n        \"trees_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/git/trees{/sha}\",\n        \"statuses_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/statuses/{sha}\",\n        \"languages_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/languages\",\n        \"stargazers_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/stargazers\",\n        \"contributors_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/contributors\",\n        \"subscribers_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/subscribers\",\n        \"subscription_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/subscription\",\n        \"commits_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/commits{/sha}\",\n        \"git_commits_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/git/commits{/sha}\",\n        \"comments_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/comments{/number}\",\n        \"issue_comment_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/issues/comments{/number}\",\n        \"contents_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/contents/{+path}\",\n        \"compare_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/compare/{base}...{head}\",\n        \"merges_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/merges\",\n        \"archive_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/{archive_format}{/ref}\",\n        \"downloads_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/downloads\",\n        \"issues_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/issues{/number}\",\n        \"pulls_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/pulls{/number}\",\n        \"milestones_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/milestones{/number}\",\n        \"notifications_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/notifications{?since,all,participating}\",\n        \"labels_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/labels{/name}\",\n        \"releases_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/releases{/id}\",\n        \"deployments_url\": \"https://api.github.com/repos/Navnath-097/TestAutomationUsingSelenium/deployments\",\n        \"created_at\": \"2025-02-11T15:59:42Z\",\n        \"updated_at\": \"2025-02-11T16:09:22Z\",\n        \"pushed_at\": \"2025-02-11T16:09:19Z\",\n        \"git_url\": \"git://github.com/Navnath-097/TestAutomationUsingSelenium.git\",\n        \"ssh_url\": \"git@github.com:Navnath-097/TestAutomationUsingSelenium.git\",\n        \"clone_url\": \"https://github.com/Navnath-097/TestAutomationUsingSelenium.git\",\n        \"svn_url\": \"https://github.com/Navnath-097/TestAutomationUsingSelenium\",\n        \"homepage\": null,\n        \"size\": 74,\n        \"stargazers_count\": 0,\n        \"watchers_count\": 0,\n        \"language\": \"HTML\",\n        \"has_issues\": true,\n        \"has_projects\": true,\n        \"has_downloads\": true,\n        \"has_wiki\": true,\n        \"has_pages\": false,\n        \"has_discussions\": false,\n        \"forks_count\": 0,\n        \"mirror_url\": null,\n        \"archived\": false,\n        \"disabled\": false,\n        \"open_issues_count\": 0,\n        \"license\": null,\n        \"allow_forking\": true,\n        \"is_template\": false,\n        \"web_commit_signoff_required\": false,\n        \"topics\": [],\n        \"visibility\": \"public\",\n        \"forks\": 0,\n        \"open_issues\": 0,\n        \"watchers\": 0,\n        \"default_branch\": \"master\",\n        \"permissions\": {\n            \"admin\": true,\n            \"maintain\": true,\n            \"push\": true,\n            \"triage\": true,\n            \"pull\": true\n        }\n    },\n    {\n        \"id\": 922582818,\n        \"node_id\": \"R_kgDONv1_Ig\",\n        \"name\": \"WorkSample\",\n        \"full_name\": \"Navnath-097/WorkSample\",\n        \"private\": false,\n        \"owner\": {\n            \"login\": \"Navnath-097\",\n            \"id\": 119046497,\n            \"node_id\": \"U_kgDOBxiBYQ\",\n            \"avatar_url\": \"https://avatars.githubusercontent.com/u/119046497?v=4\",\n            \"gravatar_id\": \"\",\n            \"url\": \"https://api.github.com/users/Navnath-097\",\n            \"html_url\": \"https://github.com/Navnath-097\",\n            \"followers_url\": \"https://api.github.com/users/Navnath-097/followers\",\n            \"following_url\": \"https://api.github.com/users/Navnath-097/following{/other_user}\",\n            \"gists_url\": \"https://api.github.com/users/Navnath-097/gists{/gist_id}\",\n            \"starred_url\": \"https://api.github.com/users/Navnath-097/starred{/owner}{/repo}\",\n            \"subscriptions_url\": \"https://api.github.com/users/Navnath-097/subscriptions\",\n            \"organizations_url\": \"https://api.github.com/users/Navnath-097/orgs\",\n            \"repos_url\": \"https://api.github.com/users/Navnath-097/repos\",\n            \"events_url\": \"https://api.github.com/users/Navnath-097/events{/privacy}\",\n            \"received_events_url\": \"https://api.github.com/users/Navnath-097/received_events\",\n            \"type\": \"User\",\n            \"user_view_type\": \"public\",\n            \"site_admin\": false\n        },\n        \"html_url\": \"https://github.com/Navnath-097/WorkSample\",\n        \"description\": null,\n        \"fork\": false,\n        \"url\": \"https://api.github.com/repos/Navnath-097/WorkSample\",\n        \"forks_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/forks\",\n        \"keys_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/keys{/key_id}\",\n        \"collaborators_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/collaborators{/collaborator}\",\n        \"teams_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/teams\",\n        \"hooks_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/hooks\",\n        \"issue_events_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/issues/events{/number}\",\n        \"events_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/events\",\n        \"assignees_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/assignees{/user}\",\n        \"branches_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/branches{/branch}\",\n        \"tags_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/tags\",\n        \"blobs_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/git/blobs{/sha}\",\n        \"git_tags_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/git/tags{/sha}\",\n        \"git_refs_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/git/refs{/sha}\",\n        \"trees_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/git/trees{/sha}\",\n        \"statuses_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/statuses/{sha}\",\n        \"languages_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/languages\",\n        \"stargazers_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/stargazers\",\n        \"contributors_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/contributors\",\n        \"subscribers_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/subscribers\",\n        \"subscription_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/subscription\",\n        \"commits_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/commits{/sha}\",\n        \"git_commits_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/git/commits{/sha}\",\n        \"comments_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/comments{/number}\",\n        \"issue_comment_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/issues/comments{/number}\",\n        \"contents_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/contents/{+path}\",\n        \"compare_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/compare/{base}...{head}\",\n        \"merges_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/merges\",\n        \"archive_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/{archive_format}{/ref}\",\n        \"downloads_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/downloads\",\n        \"issues_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/issues{/number}\",\n        \"pulls_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/pulls{/number}\",\n        \"milestones_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/milestones{/number}\",\n        \"notifications_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/notifications{?since,all,participating}\",\n        \"labels_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/labels{/name}\",\n        \"releases_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/releases{/id}\",\n        \"deployments_url\": \"https://api.github.com/repos/Navnath-097/WorkSample/deployments\",\n        \"created_at\": \"2025-01-26T15:47:17Z\",\n        \"updated_at\": \"2025-01-26T16:19:49Z\",\n        \"pushed_at\": \"2025-01-26T16:19:45Z\",\n        \"git_url\": \"git://github.com/Navnath-097/WorkSample.git\",\n        \"ssh_url\": \"git@github.com:Navnath-097/WorkSample.git\",\n        \"clone_url\": \"https://github.com/Navnath-097/WorkSample.git\",\n        \"svn_url\": \"https://github.com/Navnath-097/WorkSample\",\n        \"homepage\": null,\n        \"size\": 170,\n        \"stargazers_count\": 0,\n        \"watchers_count\": 0,\n        \"language\": \"HTML\",\n        \"has_issues\": true,\n        \"has_projects\": true,\n        \"has_downloads\": true,\n        \"has_wiki\": true,\n        \"has_pages\": false,\n        \"has_discussions\": false,\n        \"forks_count\": 0,\n        \"mirror_url\": null,\n        \"archived\": false,\n        \"disabled\": false,\n        \"open_issues_count\": 0,\n        \"license\": null,\n        \"allow_forking\": true,\n        \"is_template\": false,\n        \"web_commit_signoff_required\": false,\n        \"topics\": [],\n        \"visibility\": \"public\",\n        \"forks\": 0,\n        \"open_issues\": 0,\n        \"watchers\": 0,\n        \"default_branch\": \"main\",\n        \"permissions\": {\n            \"admin\": true,\n            \"maintain\": true,\n            \"push\": true,\n            \"triage\": true,\n            \"pull\": true\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Post data for data retrieval",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\"name\":\"api testing with postman\",\n\n\"isbn\":\"B1234\",\n\n\"aisle\":\"8765\",\n\n\"author\":\"Navnath Chavan\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rahulshettyacademy.com/Library/Addbook.php",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"Library",
+						"Addbook.php"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": [
+				{
+					"name": "Post data",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n\"name\":\"api testing with postman\",\n\n\"isbn\":\"B1234\",\n\n\"aisle\":\"8765\",\n\n\"author\":\"Navnath Chavan\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://rahulshettyacademy.com/Library/Addbook.php",
+							"protocol": "https",
+							"host": [
+								"rahulshettyacademy",
+								"com"
+							],
+							"path": [
+								"Library",
+								"Addbook.php"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 Feb 2025 05:14:17 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.52 (Ubuntu)"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3600"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Msg\": \"successfully added\",\n    \"ID\": \"B12348765\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Data retrieval",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rahulshettyacademy.com/Library/GetBook.php?AuthorName=Navnath Chavan",
+					"protocol": "https",
+					"host": [
+						"rahulshettyacademy",
+						"com"
+					],
+					"path": [
+						"Library",
+						"GetBook.php"
+					],
+					"query": [
+						{
+							"key": "AuthorName",
+							"value": "Navnath Chavan"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "data retrieval request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://rahulshettyacademy.com/Library/GetBook.php?AuthorName=Navnath Chavan",
+							"protocol": "https",
+							"host": [
+								"rahulshettyacademy",
+								"com"
+							],
+							"path": [
+								"Library",
+								"GetBook.php"
+							],
+							"query": [
+								{
+									"key": "AuthorName",
+									"value": "Navnath Chavan"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 12 Feb 2025 05:20:09 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.52 (Ubuntu)"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3600"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+						},
+						{
+							"key": "Content-Length",
+							"value": "143"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"book_name\": \"api testing with postman\",\n        \"isbn\": \"n1234\",\n        \"aisle\": \"8765\"\n    },\n    {\n        \"book_name\": \"api testing with postman\",\n        \"isbn\": \"B1234\",\n        \"aisle\": \"8765\"\n    }\n]"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
