@@ -69,3 +69,4 @@ The Postman test results for the collection **"api-testing-with-postman"** show 
 - **Improve Error Handling:** Include tests for scenarios where incorrect or missing data is provided to see how the API responds.  
 - **Optimize Response Time:** While response times are within acceptable limits, further optimizations can be explored if needed.  
 
+![Image](https://github.com/user-attachments/assets/f263d601-0279-4ddd-8a9b-28094b12e3e1)
